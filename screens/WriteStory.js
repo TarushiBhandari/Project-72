@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View,Text,StyleSheet,Image,TextInput,TouchableOpacity} from 'react-native';
+import {View,Text,StyleSheet,Image,TextInput,TouchableOpacity, KeyboardAvoidingView, ToastAndroid} from 'react-native';
 import db from '../config';
 import firebase from 'firebase';
 
@@ -15,12 +15,11 @@ export default class WriteStoryScreen extends React.Component{
     }
 
     buttonPressed=()=>{
-        alert('Story Submitted');
         this.setState({
             title: '',
             author: '',
             story: ''
-        })
+        });
     }
 
     
@@ -37,6 +36,7 @@ export default class WriteStoryScreen extends React.Component{
             <View>
         </View>
 
+<KeyboardAvoidingView>
                 <TextInput 
                 placeholder="Story Title"
                 style={styles.storyTitle}
@@ -75,9 +75,11 @@ export default class WriteStoryScreen extends React.Component{
                 >
                     <Text 
                     style={styles.text}
-                    onPress={this.submitStory}
+                    onPress={this.submitStory,
+                        ToastAndroid.show("Story Submitted", ToastAndroid.SHORT)}
                     >SUBMIT STORY</Text>
                 </TouchableOpacity>
+                </KeyboardAvoidingView>
             </View>
             
         )
