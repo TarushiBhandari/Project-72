@@ -29,6 +29,7 @@ export default class WriteStoryScreen extends React.Component{
       'author': this.state.author,
       'story': this.state.story
    });
+   ToastAndroid.show("Story Submitted", ToastAndroid.SHORT);
   }
     render(){
         return(
@@ -39,8 +40,8 @@ export default class WriteStoryScreen extends React.Component{
 <KeyboardAvoidingView>
                 <TextInput 
                 placeholder="Story Title"
-                style={styles.storyTitle}
                 value={this.state.title}
+                style={styles.storyTitle}
                 onChangeText={(text) => this.setState({ title: text })}
                 />
 
@@ -64,7 +65,6 @@ export default class WriteStoryScreen extends React.Component{
                 multiline={true}
                 style={styles.storyBox}
                 onChangeText={(text) => this.setState({ story: text })}
-                value={this.state.story}
                 />
 
                 <TouchableOpacity 
@@ -75,8 +75,7 @@ export default class WriteStoryScreen extends React.Component{
                 >
                     <Text 
                     style={styles.text}
-                    onPress={this.submitStory,
-                        ToastAndroid.show("Story Submitted", ToastAndroid.SHORT)}
+                    onPress={this.submitStory}
                     >SUBMIT STORY</Text>
                 </TouchableOpacity>
                 </KeyboardAvoidingView>
